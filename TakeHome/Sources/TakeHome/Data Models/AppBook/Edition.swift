@@ -15,12 +15,17 @@ public struct Edition {
     /// A unique identifier that distinguishes this object from any other
     public private(set) var id: UUID
     
-    /// A reference to the owner of the Edition
-    public private(set) var bookId: UUID
-    
     public var title: String
     public var description: String
     public var comments: String
     
     public private(set) var pages: [Page]
+    
+    public init(title: String, description: String, comments: String, pages: [Page]) {
+        self.id = UUID()
+        self.title = title
+        self.description = description
+        self.comments = comments
+        self.pages = pages
+    }
 }

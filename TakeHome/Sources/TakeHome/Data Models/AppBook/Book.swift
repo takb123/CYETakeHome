@@ -26,7 +26,8 @@ public struct Book {
     public private(set) var editions: [Edition]
     
     /// Generic initializer
-    public init(id: UUID = UUID(), title: String, description: String, editions: [Edition]) {
+    public init(title: String, description: String, editions: [Edition]) {
+        self.id = UUID()
         self.title = title
         self.description = description
         self.editions = editions
