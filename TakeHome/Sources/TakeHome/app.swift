@@ -4,7 +4,7 @@ public struct TakeHome {
     /// Our Book Object
     ///
     /// This is the main book of the application (for demonstration purposes). It contains two editions each with 10 pages.
-    public var TestAppBook = Book(
+    public var example_appBook = Book(
         title: "Test AppBook",
         description: "This is an example AppBook made by a developer.",
         editions: [
@@ -45,7 +45,7 @@ public struct TakeHome {
         ]
     )
     
-    public var teacher: Teacher = Teacher(
+    public var example_teacher: Teacher = Teacher(
         name: "Sēnor Ben Cheng",
         students: [
             Student(name: "Abed Nadir"),
@@ -59,15 +59,27 @@ public struct TakeHome {
     )
     
     
-
+    /// This is where you will run your code to ensure that it works as desired. Upon pressing the play button in Xcode (or running the script in terminal), the code in this function will be executed.
     public static func main() {
         
+        let th = TakeHome()
+        
         // Populate Student Answers
+        for student in th.example_teacher.students {
+            for page in th.example_appBook.editions[0].pages {
+                student.enterAnswer(for: page)
+            }
+        }
         
         // Print each student in the class
+        print("Students in Class:")
         
+        for student in th.example_teacher.students {
+            print(student.name)
+        }
         
-        
-        
+        //
+        //  Your code goes here
+        //
     }
 }

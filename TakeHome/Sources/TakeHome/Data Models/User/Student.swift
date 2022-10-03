@@ -24,8 +24,8 @@ public class Student: Codable, Identifiable {
 
 public extension Student {
     
-    func enterAnswers(with answers: [Answer]) {
-        self.answers = answers
+    func enterAnswer(for page: Page) {
+        self.answers.append(Answer(pageID: page.id))
     }
 }
 
