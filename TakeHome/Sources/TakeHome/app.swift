@@ -45,11 +45,29 @@ public struct TakeHome {
         ]
     )
     
-    public 
+    public var teacher: Teacher = Teacher(
+        name: "Sēnor Ben Cheng",
+        students: [
+            Student(name: "Abed Nadir"),
+            Student(name: "Britta Perry"),
+            Student(name: "Troy Barnes"),
+            Student(name: "Pierce Hawthorne"),
+            Student(name: "Jeff Winger"),
+            Student(name: "Annie Edison"),
+            Student(name: "Shirley Bennett"),
+        ]
+    )
     
     
 
     public static func main() {
-        print(TakeHome().text)
+        
+        // Populate Student Answers
+        
+        // Print each student in the class
+        
+        
+        
+        
     }
 }

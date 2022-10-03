@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Student: Codable, Identifiable {
+public class Student: Codable, Identifiable {
     
     public private(set) var id: UUID
     
@@ -15,6 +15,18 @@ public struct Student: Codable, Identifiable {
     
     public var answers: [Answer]
     
+    public init(name: String) {
+        self.id = UUID()
+        self.name = name
+        self.answers = []
+    }
+}
+
+public extension Student {
+    
+    func enterAnswers(with answers: [Answer]) {
+        self.answers = answers
+    }
 }
 
 public struct Answer: Codable, Identifiable {

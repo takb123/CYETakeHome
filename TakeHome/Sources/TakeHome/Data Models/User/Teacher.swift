@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Teacher: Codable, Identifiable {
+public class Teacher: Codable, Identifiable {
     
     public private(set) var id: UUID
     
