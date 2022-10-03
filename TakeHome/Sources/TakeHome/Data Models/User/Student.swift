@@ -23,4 +23,12 @@ public struct Answer: Codable, Identifiable {
     
     public var pageID: UUID
     public var score: Double
+    
+    public init(pageID: UUID) {
+        self.id = UUID()
+        self.pageID = pageID
+        
+        // Assign a random value for example purposes
+        self.score = Double.random(in: 0...1)
+    }
 }

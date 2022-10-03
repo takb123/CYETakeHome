@@ -11,5 +11,14 @@ public struct Teacher: Codable, Identifiable {
     
     public private(set) var id: UUID
     
+    public private(set) var name: String
+    
+    public private(set) var students: [Student]
+    
+    public init(name: String, students: [Student]) {
+        self.id = UUID()
+        self.name = name
+        self.students = students
+    }
     
 }
