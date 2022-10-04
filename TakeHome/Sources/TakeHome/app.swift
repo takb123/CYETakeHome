@@ -70,7 +70,9 @@ public struct TakeHome {
         /// Populate Student Results with fake data
         ///
         /// A random int is used to switch up the edition used to populate pages (will come in handy later). Feel free to change this as you are developing.
+        /// - Note: For Challenge #3 you will want to comment out line 76 and uncomment line 75
         for student in th.example_teacher.students {
+//            for page in th.example_appBook.editions[0].pages {    // Uncomment for Challenge #3
             for page in th.example_appBook.editions[Int.random(in: 0...1)].pages {
                 student.enterAnswer(for: page, type: .randomized)
             }
