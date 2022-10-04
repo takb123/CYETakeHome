@@ -15,10 +15,16 @@ public struct Edition {
     /// A unique identifier that distinguishes this object from any other
     public private(set) var id: UUID
     
+    /// The title of the edition
     public var title: String
+    
+    /// A short description of the purpose of this book
     public var description: String
+    
+    /// Any comments differentiating this edition from others
     public var comments: String
     
+    /// The pages contained in this edition
     public private(set) var pages: [Page]
     
     public init(title: String, description: String, comments: String, pages: [Page]) {

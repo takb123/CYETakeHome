@@ -45,6 +45,9 @@ public struct TakeHome {
         ]
     )
     
+    /// An example teacher to use for the assessment
+    ///
+    /// This teacher has a list of students (who are later populated with student results). You should not need to make any changes to this code in the assesment, however feel free to if you think it is valuable.
     public var example_teacher: Teacher = Teacher(
         name: "Sēnor Ben Cheng",
         students: [
@@ -64,10 +67,12 @@ public struct TakeHome {
         
         let th = TakeHome()
         
-        // Populate Student Answers
+        /// Populate Student Results with fake data
+        ///
+        /// A random int is used to switch up the edition used to populate pages (will come in handy later). Feel free to change this as you are developing.
         for student in th.example_teacher.students {
-            for page in th.example_appBook.editions[0].pages {
-                student.enterAnswer(for: page)
+            for page in th.example_appBook.editions[Int.random(in: 0...1)].pages {
+                student.enterAnswer(for: page, type: .randomized)
             }
         }
         

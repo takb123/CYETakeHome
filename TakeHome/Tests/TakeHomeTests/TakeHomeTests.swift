@@ -2,10 +2,50 @@ import XCTest
 @testable import TakeHome
 
 final class TakeHomeTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertTrue(!TakeHome().example_teacher.students.isEmpty)
+    
+    private var th = TakeHome()
+    
+    func testBookExists() throws {
+        
+        // Validate title of AppBook
+        XCTAssertTrue(th.example_appBook.title == "Test AppBook")
+        
+        // Validate editions exist
+        XCTAssertTrue(th.example_appBook.editions.count > 0)
+        
+        // Validate pages for those editions exist
+        for edition in th.example_appBook.editions {
+            XCTAssertTrue(edition.pages.count > 0)
+        }
     }
+    
+    func testTeacherExists() throws {
+        // Validate the name of the teacher
+        XCTAssertTrue(th.example_teacher.name == "Sēnor Ben Cheng")
+    }
+    
+    func testStudentsExist() throws {
+        // Validate students exist
+        XCTAssertTrue(th.example_teacher.students.count > 0)
+    }
+    
+    func testPopulateStudentAnswers() throws {
+        let student = Student(name: "Test Student")
+        let page = Page(title: "Test Page")
+        
+        student.enterAnswer(for: page, type: .standard)
+        
+        // Validate an answer exists
+        XCTAssertTrue(student.answers.count == 1)
+        
+        // Validate that the page id's are the same
+        XCTAssertTrue(page.id == student.answers[0].pageID)
+        
+        // Validate that the value is accurate
+        XCTAssertTrue(student.answers[0].score == 0.5)
+    }
+    
+    //
+    // Write your tests here!
+    //
 }

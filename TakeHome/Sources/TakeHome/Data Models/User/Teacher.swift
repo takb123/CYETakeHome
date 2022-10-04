@@ -7,12 +7,17 @@
 
 import Foundation
 
+/// Teacher Object
+///
+/// The teacher has a name, id, and list of students. An instantiation of this class is made in `app.swift`
 public class Teacher: Codable, Identifiable {
     
     public private(set) var id: UUID
     
+    /// The full name of the teacher
     public private(set) var name: String
     
+    /// An array of students in the teachers class
     public private(set) var students: [Student]
     
     public init(name: String, students: [Student]) {
