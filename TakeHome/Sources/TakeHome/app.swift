@@ -45,8 +45,8 @@ public struct TakeHome {
         th.example_teacher.students = th.example_students
         
         // Populate Student Data
-        th.generateFakeStudentDataRandomly()
-//       th.generateFakeStudentDataNotRandomly() // Uncomment for non-random data
+        th.generateFakeStudentData(.randomized)
+//      th.generateFakeStudentData(.standardized) // Uncomment for non-random data
         
         th.challengeOne()
         th.challengeTwo()
@@ -70,6 +70,11 @@ public extension TakeHome {
         
     }
     
+    /// In your second challenge, we want to open things up a bit more in a scenario:
+    ///
+    /// The team has been demoing the beta version of the app to teachers for the last month. In that time, they have begun to notice that teachers often swap classes a lot. Due to unforeseen circumstances, teachers often have to sub in for other teachers, and this creates a problem in our app as students belong to specific teachers in code. Your manager has tasked you with creating a new `Class` object that untangles the teacher and student objects. Additionally, this class object should store the book that the class is using, so that it can be referenced later.
+    ///
+    /// Your task is to create this model, create an `example_class` object, populate it with a teacher, book, and students. Additionally, you should remove any old code from the Teacher and Student models that is antiquated / outdated. To verify that you have successfully created this class object, print out the name of your `example_class`.
     func challengeTwo() {
         
         //
@@ -100,23 +105,11 @@ public extension TakeHome {
     /// Generates some example data to use when writing your code
     ///
     /// This function goes through each student and generates some random answers to each page of the the two books
-    func generateFakeStudentDataRandomly() {
+    func generateFakeStudentData(_ type: Answer.ScoreType) {
         for student in self.example_students {
             for page in self.example_book.pages {
-                student.enterAnswer(for: page, type: .randomized)
+                student.enterAnswer(for: page, type: type)
             }
         }
     }
-    
-    /// Generates some example data to use when writing your code
-    ///
-    /// This function goes through each student and generates some answers where their score is 0.5 for each page of the two books
-    func generateFakeStudentDataNotRandomly() {
-        for student in self.example_students {
-            for page in self.example_book.pages {
-                student.enterAnswer(for: page, type: .standard)
-            }
-        }
-    }
-    
 }
