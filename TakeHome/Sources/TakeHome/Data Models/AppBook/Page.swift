@@ -21,4 +21,6 @@ public struct Page: Codable, Identifiable {
         self.id = UUID()
         self.title = title
     }
+    
+    // class
 }

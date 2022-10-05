@@ -4,62 +4,36 @@ public struct TakeHome {
     /// Our Book Object
     ///
     /// This is the main book of the application (for demonstration purposes). It contains two editions each with 10 pages.
-    public var example_appBook = Book(
-        title: "Test AppBook",
-        description: "This is an example AppBook made by a developer.",
-        editions: [
-            Edition(
-                title: "Test AppBook Edition 2",
-                description: "This is the second edition of Test AppBook",
-                comments: "Moved page 3 to page 5 and some small edits to the langauge used on page 4",
-                pages: [
-                    Page(title: "Page 1"),
-                    Page(title: "Page 2"),
-                    Page(title: "Page 3"),
-                    Page(title: "Page 4"),
-                    Page(title: "Page 5"),
-                    Page(title: "Page 6"),
-                    Page(title: "Page 7"),
-                    Page(title: "Page 8"),
-                    Page(title: "Page 9"),
-                    Page(title: "Page 10"),
-                ]
-            ),
-            Edition(
-                title: "Test AppBook Edition 1",
-                description: "This is the first edition of Test AppBook",
-                comments: "",
-                pages: [
-                    Page(title: "Page 1"),
-                    Page(title: "Page 2"),
-                    Page(title: "Page 3"),
-                    Page(title: "Page 4"),
-                    Page(title: "Page 5"),
-                    Page(title: "Page 6"),
-                    Page(title: "Page 7"),
-                    Page(title: "Page 8"),
-                    Page(title: "Page 9"),
-                    Page(title: "Page 10"),
-                ]
-            ),
+    public var example_book = Book(
+        title: "Intro to Spanish Book 1",
+        description: "This is an example book with fake pages",
+        pages: [
+            Page(title: "Page 1"),
+            Page(title: "Page 2"),
+            Page(title: "Page 3"),
+            Page(title: "Page 4"),
+            Page(title: "Page 5"),
+            Page(title: "Page 6"),
+            Page(title: "Page 7"),
+            Page(title: "Page 8"),
+            Page(title: "Page 9"),
+            Page(title: "Page 10"),
         ]
     )
     
     /// An example teacher to use for the assessment
-    ///
-    /// This teacher has a list of students (who are later populated with student results). You should not need to make any changes to this code in the assesment, however feel free to if you think it is valuable.
-    public var example_teacher: Teacher = Teacher(
-        name: "Sēnor Ben Cheng",
-        students: [
-            Student(name: "Abed Nadir"),
-            Student(name: "Britta Perry"),
-            Student(name: "Troy Barnes"),
-            Student(name: "Pierce Hawthorne"),
-            Student(name: "Jeff Winger"),
-            Student(name: "Annie Edison"),
-            Student(name: "Shirley Bennett"),
-        ]
-    )
+    public var example_teacher: Teacher = Teacher(name: "Sēnor Ben Cheng")
+    
+    /// An example list of students
+    public var example_students: [Student] = [
+        Student(name: "Abed Nadir"),
+        Student(name: "Britta Perry"),
+        Student(name: "Troy Barnes"),
+        Student(name: "Pierce Hawthorne"),
+        Student(name: "Jeff Winger"),
+        Student(name: "Annie Edison"),
+        Student(name: "Shirley Bennett"),
+    ]
     
     
     /// This is where you will run your code to ensure that it works as desired. Upon pressing the play button in Xcode (or running the script in terminal), the code in this function will be executed.
@@ -67,26 +41,82 @@ public struct TakeHome {
         
         let th = TakeHome()
         
-        /// Populate Student Results with fake data
-        ///
-        /// A random int is used to switch up the edition used to populate pages (will come in handy later). Feel free to change this as you are developing.
-        /// - Note: For Challenge #3 you will want to comment out line 76 and uncomment line 75
-        for student in th.example_teacher.students {
-//            for page in th.example_appBook.editions[0].pages {    // Uncomment for Challenge #3
-            for page in th.example_appBook.editions[Int.random(in: 0...1)].pages {
-                student.enterAnswer(for: page, type: .randomized)
-            }
-        }
+        // Add the list of students to the teacher
+        th.example_teacher.students = th.example_students
         
-        // Print each student in the class
-        print("Students in Class:")
+        // Populate Student Data
+        th.generateFakeStudentDataRandomly()
+//       th.generateFakeStudentDataNotRandomly() // Uncomment for non-random data
         
-        for student in th.example_teacher.students {
-            print(student.name)
-        }
+        th.challengeOne()
+        th.challengeTwo()
+        th.challengeThree()
+    }
+}
+
+/// YOUR ANSWERS GO HERE !!
+///
+/// This is where you will write most of your code for the three challenges. Keep in mind that some of the challenges require you to make new files or change existing ones. If you have anything print to the terminal make sure it goes in here!!!
+/// - Note: Feel free to delete any code in the functions below!
+public extension TakeHome {
+    
+    func challengeOne() {
         
         //
         //  Your code goes here
         //
+        
+        print("Book: \(example_book.title)")
+        
     }
+    
+    func challengeTwo() {
+        
+        //
+        //  Your code goes here
+        //
+        
+        print("Teacher: \(example_teacher.name)")
+        
+    }
+    
+    func challengeThree() {
+        
+        //
+        //  Your code goes here
+        //
+        
+        print("Student Count: \(example_students.count)")
+        
+    }
+    
+}
+
+/// Helper Functions
+///
+/// This is where we have written some helper functions to set up your enviornment for you
+public extension TakeHome {
+    
+    /// Generates some example data to use when writing your code
+    ///
+    /// This function goes through each student and generates some random answers to each page of the the two books
+    func generateFakeStudentDataRandomly() {
+        for student in self.example_students {
+            for page in self.example_book.pages {
+                student.enterAnswer(for: page, type: .randomized)
+            }
+        }
+    }
+    
+    /// Generates some example data to use when writing your code
+    ///
+    /// This function goes through each student and generates some answers where their score is 0.5 for each page of the two books
+    func generateFakeStudentDataNotRandomly() {
+        for student in self.example_students {
+            for page in self.example_book.pages {
+                student.enterAnswer(for: page, type: .standard)
+            }
+        }
+    }
+    
 }

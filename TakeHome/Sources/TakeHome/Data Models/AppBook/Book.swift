@@ -9,8 +9,7 @@ import Foundation
 
 /// `Book` Data Model
 ///
-/// This is the precipice of the data model. The `Book` model contains important meta data related to the book as well as its edition(s) and content
-/// - Note: The **content** of the book is not actually stored in the book object, but in the books `editions`. This is detailed more in the editions model.
+/// This is the precipice of the data model. The `Book` model contains important meta data related to the book as well as it's pages (content).
 public struct Book {
     
     /// A unique identifier that distinguishes this book from any other
@@ -23,21 +22,13 @@ public struct Book {
     public var description: String
     
     /// The different versions (editions) of the book ordered from newest to oldest
-    public private(set) var editions: [Edition]
+    public private(set) var pages: [Page]
     
     /// Generic initializer
-    public init(title: String, description: String, editions: [Edition]) {
+    public init(title: String, description: String, pages: [Page]) {
         self.id = UUID()
         self.title = title
         self.description = description
-        self.editions = editions
+        self.pages = pages
     }
-}
-
-public extension Book {
-    
-    // Add an edition to the book
-    
-    
-    //
 }

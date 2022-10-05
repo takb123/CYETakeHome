@@ -18,12 +18,12 @@ public class Teacher: Codable, Identifiable {
     public private(set) var name: String
     
     /// An array of students in the teachers class
-    public private(set) var students: [Student]
+    public var students: [Student]
     
-    public init(name: String, students: [Student]) {
+    public init(name: String) {
         self.id = UUID()
         self.name = name
-        self.students = students
+        self.students = []
     }
     
 }

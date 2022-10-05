@@ -8,15 +8,10 @@ final class TakeHomeTests: XCTestCase {
     func testBookExists() throws {
         
         // Validate title of AppBook
-        XCTAssertTrue(th.example_appBook.title == "Test AppBook")
-        
-        // Validate editions exist
-        XCTAssertTrue(th.example_appBook.editions.count > 0)
+        XCTAssertTrue(th.example_book.title == "Intro to Spanish Book 1")
         
         // Validate pages for those editions exist
-        for edition in th.example_appBook.editions {
-            XCTAssertTrue(edition.pages.count > 0)
-        }
+        XCTAssertTrue(th.example_book.pages.count > 0)
     }
     
     func testTeacherExists() throws {
@@ -26,7 +21,7 @@ final class TakeHomeTests: XCTestCase {
     
     func testStudentsExist() throws {
         // Validate students exist
-        XCTAssertTrue(th.example_teacher.students.count > 0)
+        XCTAssertTrue(th.example_students.count > 0)
     }
     
     func testPopulateStudentAnswers() throws {
