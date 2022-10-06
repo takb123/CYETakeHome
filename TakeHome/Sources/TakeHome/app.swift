@@ -61,12 +61,19 @@ public struct TakeHome {
 public extension TakeHome {
 
     func challengeOne() {
-        
-        //
-        //  Your code goes here
-        //
-        
-        print("Book: \(example_book.title)")
+
+        let studentOne = example_students[0]
+        for ans in studentOne.answers {
+            var pageTitle = String()
+            for page in example_book.pages {
+                if ans.pageID == page.id {
+                    pageTitle = page.title
+                }
+            }
+
+            let percent = Int(ans.score * 100.0)
+            print("\(pageTitle): \(percent)%")
+        }
         
     }
     
