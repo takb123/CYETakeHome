@@ -13,6 +13,9 @@ import Foundation
 public class Class {
     
     public private(set) var id: UUID
+
+    /// The name of the class
+    public private(set) var name: String
     
     /// The teacher of the class
     public var teacher: Teacher
@@ -23,11 +26,16 @@ public class Class {
     /// The book used in the class
     public var book: Book
     
-    public init(teacher: Teacher, students: [Student], book: Book) {
+    public init(name: String) {
         self.id = UUID()
-        self.teacher = teacher
-        self.students = students
-        self.book = book
+        self.name = name
+        self.teacher = Teacher(name: "Default Name")
+        self.students = []
+        self.book = Book(
+            title: "Default Title",
+            description: "Default Description",
+            pages: []
+        )
     }
     
 }
