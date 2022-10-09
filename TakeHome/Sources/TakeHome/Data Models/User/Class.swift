@@ -78,4 +78,26 @@ public class Class {
         }
         return result
     }
+
+    public func averageScoreByStudent() -> String{
+        //Create a list of tuple including name of student and their average score
+        var studentAndAverageScore: [(String, Int)] = []
+        for student in students {
+            var totalScore = 0.0
+            for answer in student.answers {
+                totalScore += answer.score
+            }
+            totalScore *= 100.0 / Double(student.answers.count)
+            totalScore.round()
+            studentAndAverageScore.append((student.name, Int(totalScore)))
+        }
+
+        //Sort the list by average score and return formatted result
+        studentAndAverageScore.sort { $0.1 == $1.1 ? $0.0 > $1.0 : $0.1 > $1.1 }
+        var result = String()
+        for (studentName, score) in studentAndAverageScore {
+            result += studentName + ": " + String(score) + "%\n"
+        }
+        return result
+    }
 }
