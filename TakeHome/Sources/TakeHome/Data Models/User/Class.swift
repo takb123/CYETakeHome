@@ -74,7 +74,7 @@ public class Class {
         pageTitleAndAverageScore.sort { $0.1 == $1.1 ? $0.0 > $1.0 : $0.1 > $1.1 }
         var result = String()
         for (pageTitle, score) in pageTitleAndAverageScore {
-            result += pageTitle + ": " + String(score) + "%\n"
+            result += pageTitle.withCString { String(format: "%-8s: %3d%%\n", $0, score)}
         }
         return result
     }
@@ -96,7 +96,7 @@ public class Class {
         studentAndAverageScore.sort { $0.1 == $1.1 ? $0.0 > $1.0 : $0.1 > $1.1 }
         var result = String()
         for (studentName, score) in studentAndAverageScore {
-            result += studentName + ": " + String(score) + "%\n"
+            result += studentName.withCString { String(format: "%-20s: %3d%%\n", $0, score)}
         }
         return result
     }

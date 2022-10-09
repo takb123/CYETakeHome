@@ -80,7 +80,7 @@ public extension TakeHome {
             
             var percent = ans.score * 100.0
             percent.round()
-            print("\(pageTitle): \(Int(percent))%")
+            print(pageTitle.withCString { String(format: "%-8s: %3d%%", $0, Int(percent))})
         }
         
     }
