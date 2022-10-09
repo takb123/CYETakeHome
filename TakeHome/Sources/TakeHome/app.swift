@@ -53,7 +53,7 @@ public struct TakeHome {
         
         // Populate Student Data
         th.generateFakeStudentData(.randomized)
-//      th.generateFakeStudentData(.standardized) // Uncomment for non-random data
+//      th.generateFakeStudentData(.standard) // Uncomment for non-random data
         
         th.challengeOne()
         th.challengeTwo()
