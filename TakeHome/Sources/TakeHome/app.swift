@@ -100,12 +100,12 @@ public extension TakeHome {
     
     func challengeThree() {
         
-        //
-        //  Your code goes here
-        //
-        
-        print("Student Count: \(example_students.count)")
-        
+        print()
+        print("Average Score By Page (From Highest to Lowest)")
+        print(example_class.averageScoreByPage())
+        print("Average Score By Student (From Highest to Lowest)")
+        print(example_class.averageScoreByStudent())
+
     }
     
 }
