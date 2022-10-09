@@ -35,14 +35,21 @@ public struct TakeHome {
         Student(name: "Shirley Bennett"),
     ]
     
+    public var example_class: Class = Class(name: "Spanish Class")
     
     /// This is where you will run your code to ensure that it works as desired. Upon pressing the play button in Xcode (or running the script in terminal), the code in this function will be executed.
     public static func main() {
         
         let th = TakeHome()
         
-        // Add the list of students to the teacher
-        th.example_teacher.students = th.example_students
+        // Add the teacher to the class
+        th.example_class.teacher = th.example_teacher
+
+        // Add the list of students to the class
+        th.example_class.students = th.example_students
+
+        // Add the book to the class
+        th.example_class.book = th.example_book
         
         // Populate Student Data
         th.generateFakeStudentData(.randomized)
