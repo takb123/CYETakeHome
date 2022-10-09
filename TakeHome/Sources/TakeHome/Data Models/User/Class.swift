@@ -38,4 +38,44 @@ public class Class {
         )
     }
     
+    public func averageScoreByPage() -> String{
+        //Create a map with UUID of page as keys and list of individual scores as values
+        var pageIDToScores: [UUID: [Double]] = [:]
+        for student in students {
+            for answer in student.answers {
+                if pageIDToScores[answer.pageID] != nil {
+                    pageIDToScores[answer.pageID]!.append(answer.score)
+                }
+                else {
+                    pageIDToScores[answer.pageID] = [answer.score]
+                }
+            }
+        }
+        
+        //Create a list of tuple including title of page and its average score
+        var pageTitleAndAverageScore: [(String, Int)] = []
+        for (pageID, scores) in pageIDToScores {
+            var pageTitle = String()
+            for page in book.pages {
+                if page.id == pageID {
+                    pageTitle = page.title
+                }
+            }
+            var totalScore = 0.0
+            for score in scores {
+                totalScore += score
+            }
+            totalScore *= 100.0 / Double(scores.count)
+            totalScore.round()
+            pageTitleAndAverageScore.append((pageTitle, Int(totalScore)))
+        }
+
+        //Sort the list by average score and return formatted result
+        pageTitleAndAverageScore.sort { $0.1 == $1.1 ? $0.0 > $1.0 : $0.1 > $1.1 }
+        var result = String()
+        for (pageTitle, score) in pageTitleAndAverageScore {
+            result += pageTitle + ": " + String(score) + "%\n"
+        }
+        return result
+    }
 }
