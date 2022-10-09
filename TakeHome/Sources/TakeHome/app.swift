@@ -86,11 +86,14 @@ public extension TakeHome {
     
     func challengeTwo() {
         
-        //
-        //  Your code goes here
-        //
-        
-        print("Teacher: \(example_teacher.name)")
+        print()
+        print("Class: \(example_class.name)")
+        print("Teacher: \(example_class.teacher.name)")
+        print("Students:")
+        for student in example_class.students {
+            print(" -\(student.name)")
+        }
+        print("Book: \(example_class.book.title)")
         
     }
     
